@@ -1,0 +1,14 @@
+{
+  "presets": [
+    "node6",
+    "es2015",
+    "stage-0"
+  ],
+  "plugins": [
+    "babel-plugin-transform-async-to-bluebird",
+    "babel-plugin-transform-promise-to-bluebird",
+    ["babel-plugin-transform-builtin-extend", {
+      "globals": ["Error", "Array"]
+    }]
+  ]
+}
