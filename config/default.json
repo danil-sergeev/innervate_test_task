@@ -1,10 +1,6 @@
 {
   "node": "test",
   "consoleLevel": 5,
-  "jwt": {
-    "experationPeriod": 60000,
-    "extraTime": 20000
-  },
   "graphql": {
     "description": "Включен ли graphIql интерфейс на сервере",
     "enableUI": true,
