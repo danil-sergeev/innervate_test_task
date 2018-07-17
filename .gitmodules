@@ -1,0 +1,6 @@
+[submodule "src/common"]
+	path = src/common
+	url = https://github.com/innervate-ru/common.git
+[submodule "dscommon"]
+	path = dscommon
+	url = https://github.com/delightsoft/DSCommon3.git
