@@ -47,9 +47,7 @@ query A {
 Параметры подключения к PostgresQL расположены в [конфигурационном файле](https://github.com/shestpa/test_task/blob/master/config/default.json).
 Пользователи, данные которых необходимо получить в рамках решения тестовых задач, хранятся в таблице users, дамп базы данных находится в директории [/db/](https://github.com/shestpa/test_task/tree/master/db) проекта.
 Примеры пар "логин - пароль" для пользователей в базе данных:
-| Логин | Пароль |
-| ------ | ------ |
-| admin | 12345 |
-| manager | 54321 |
-| user | qverty |
-| user_2 | qwerty2 |
+- admin : 12345
+- manager : 54321
+- user : qverty
+- user_2 : qwerty2
