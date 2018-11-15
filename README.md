@@ -23,7 +23,7 @@ $ npm run server
 ```
 Перед запуском необходимо установить [git-сабмодули](https://git-scm.com/docs/git-submodule), используемые на данном проекте, а также внешние пакеты и зависимости с помощью npm.
 
-Для работы с [GraphQL](https://github.com/facebook/graphql/blob/master/README.md) и PostgresQL используется библиотека https://github.com/innervate-ru/common.
+Для работы с [GraphQL](https://github.com/facebook/graphql/blob/master/README.md) и PostgreSQL используется библиотека https://github.com/innervate-ru/common.
 Пример реализации обработчика graphql запроса доступен в сервисе test.
 Проверить его работоспособность можно с помощью GraphiQL интерфейса, который будет доступен по адресу  http://localhost:3000/graphql/v2 после запуска проекта.
 
@@ -43,8 +43,8 @@ query A {
 }
 ```
 
-Используемая СУБД - [PostgresQL](https://postgrespro.ru/docs/postgresql/9.6/) (для запуска локального сервера на windows можно использовать https://postgrespro.ru/windows).
-Параметры подключения к PostgresQL расположены в [конфигурационном файле](https://github.com/shestpa/test_task/blob/master/config/default.json).
+Используемая СУБД - [PostgreSQL](https://postgrespro.ru/docs/postgresql/9.6/) (для запуска локального сервера на windows можно использовать https://postgrespro.ru/windows).
+Параметры подключения к PostgreSQL расположены в [конфигурационном файле](https://github.com/shestpa/test_task/blob/master/config/default.json).
 Пользователи, данные которых необходимо получить в рамках решения тестовых задач, хранятся в таблице users, дамп базы данных находится в директории [/db/](https://github.com/shestpa/test_task/tree/master/db) проекта.
 Примеры пар "логин - пароль" для пользователей в базе данных:
 - admin : 12345
