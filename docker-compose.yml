@@ -1,0 +1,41 @@
+version: '3'
+services:
+  db:
+    image: postgres:10-alpine
+    restart: always
+    environment: 
+      POSTGRES_NAME: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: '12345'
+      POSTGRES_HOST: innervate_db
+    build:
+      context: db/.
+      dockerfile: Dockerfile
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data 
+    networks: 
+      - default
+
+  web: 
+    container_name: 'innervate_web'
+    restart: always
+    build: .
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      POSTGRES_NAME: postgres
+      POSTGRES_USER: innervate_user
+      POSTGRES_PASSWORD: '12345'
+      POSTGRES_HOST: innervate_db
+    deploy:
+      replicas: 1
+    depends_on:
+      - db
+    networks: 
+      - default
+    

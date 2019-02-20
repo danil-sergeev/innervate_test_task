@@ -19,7 +19,8 @@ SET row_security = off;
 -- Name: postgres; Type: DATABASE; Schema: -; Owner: postgres
 --
 
-CREATE DATABASE postgres WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Russian_Russia.1251' LC_CTYPE = 'Russian_Russia.1251';
+-- Не нужно создавать, ибо докер уже создает базу. :)
+-- CREATE DATABASE postgres WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Russian_Russia.1251' LC_CTYPE = 'Russian_Russia.1251';
 
 
 ALTER DATABASE postgres OWNER TO postgres;
@@ -181,4 +182,3 @@ CREATE UNIQUE INDEX users_user_id_uindex ON public.users USING btree (user_id);
 --
 -- PostgreSQL database dump complete
 --
-

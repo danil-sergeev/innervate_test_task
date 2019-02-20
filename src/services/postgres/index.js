@@ -6,6 +6,6 @@ export const name = require('../../common/services/serviceName').default(__filen
 export default oncePerServices(function (services) {
 
   const PGConnector = require('../../common/connectors/PGConnector').default(services);
-
+  
   return new (require('../../common/services').Service(services)(PGConnector))(name, configAPI.get('postgres'));
 });
