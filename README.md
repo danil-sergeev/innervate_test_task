@@ -21,6 +21,8 @@
 ```sh
 $ sudo docker-compose up --build --force-recreate
 ```
+Для того чтобы тесты сработали, нужно держать сервер включенным.
+
 Перед запуском необходимо установить [git-сабмодули](https://git-scm.com/docs/git-submodule), используемые на данном проекте, а также внешние пакеты и зависимости с помощью npm.
 
 Для работы с [GraphQL](https://github.com/facebook/graphql/blob/master/README.md) и PostgreSQL используется библиотека https://github.com/innervate-ru/common.
