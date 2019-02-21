@@ -55,7 +55,7 @@ export default oncePerServices((services) => {
 					});
 				} else {
 					return Promise.resolve({
-						error: "Passwords don't match each other.",
+						error: "Invalid password",
 						ok: false
 					});
 				};

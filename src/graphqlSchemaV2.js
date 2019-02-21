@@ -1,6 +1,7 @@
 import { oncePerServices } from './common/services';
 import { makeExecutableSchema } from 'graphql-tools';
 import { SchemaBuilder, LevelBuilder } from './common/graphql';
+import {GraphQLScalarType} from 'graphql';
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 

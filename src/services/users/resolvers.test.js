@@ -5,11 +5,11 @@ import test from 'ava';
 const { protocol, hostname, port } = config.get('http');
 const { pathname } = config.get('graphql');
 
-const graphQLUrl = `${protocol}://${hostname}:${port}${pathname}`;
+const graphQLUrl = `${protocol}://${hostname}:${port}${pathname}/v2`;
 
 // allUsers()
 test('query for an all users', async (t) => {
-	const { data } = await axios.post(graphQLUrl, {
+	const response = await axios.post(graphQLUrl, {
 		query: `
             query {
                 users {
@@ -20,33 +20,35 @@ test('query for an all users', async (t) => {
             }
         `
 	});
+	const {data} = response;
+	console.log(data);
 
-	t.is(data, {
-		data: {
-			users: {
-				allUsers: [
-					{
-						name: 'Пользователь системы'
-					},
-					{
-						name: 'Менеджер системы'
-					},
-					{
-						name: 'Администратор системы'
-					},
-					{
-						name: 'Заблокированный пользователь'
-					},
-					{
-						name: 'Заблокированный менеджер системы'
-					},
-					{
-						name: 'Пользователь системы 2'
-					}
-				]
-			}
+	t.deepEqual(data, {
+		"data": {
+		  "users": {
+			"allUsers": [
+			  {
+				"name": "Пользователь системы"
+			  },
+			  {
+				"name": "Менеджер системы"
+			  },
+			  {
+				"name": "Администратор системы"
+			  },
+			  {
+				"name": "Заблокированный пользователь"
+			  },
+			  {
+				"name": "Заблокированный менеджер системы"
+			  },
+			  {
+				"name": "Пользователь системы 2"
+			  }
+			]
+		  }
 		}
-	});
+	  });
 });
 
 test('test of manager boolean input with data', async (t) => {
@@ -62,7 +64,7 @@ test('test of manager boolean input with data', async (t) => {
             }
         `
 	});
-	t.is(data, {
+	t.deepEqual(data, {
 		data: {
 			users: {
 				allUsers: [
@@ -85,7 +87,7 @@ test('test of manager boolean input with data', async (t) => {
 });
 
 test('test of blocked boolean input', async (t) => {
-	const { data } = await axios.post(graphQLUrl, {
+	const response = await axios.post(graphQLUrl, {
 		query: `
             query {
                 users {
@@ -97,7 +99,8 @@ test('test of blocked boolean input', async (t) => {
             }
         `
 	});
-	t.is(data, {
+	const {data} = response;
+	t.deepEqual(data, {
 		data: {
 			users: {
 				allUsers: [
@@ -112,7 +115,7 @@ test('test of blocked boolean input', async (t) => {
 });
 
 test('test of substring search and with manager boolean aswell', async (t) => {
-	const { data } = await axios.post(graphQLUrl, {
+	const response = await axios.post(graphQLUrl, {
 		query: `
             query {
                 users {
@@ -124,7 +127,8 @@ test('test of substring search and with manager boolean aswell', async (t) => {
             }
         `
 	});
-	t.is(data, {
+	const {data} = response;
+	t.deepEqual(data, {
 		data: {
 			users: {
 				allUsers: [
@@ -140,7 +144,7 @@ test('test of substring search and with manager boolean aswell', async (t) => {
 
 // login()
 test('simple test of auth mutation', async (t) => {
-	const { data } = await axios.post(graphQLUrl, {
+	const response = await axios.post(graphQLUrl, {
 		query: `
             mutation {
                 users {
@@ -156,11 +160,8 @@ test('simple test of auth mutation', async (t) => {
           }
         `
 	});
-
-	const { ok, user } = data.users.login;
-	t.truthy(ok);
-	t.is(user.user_id, 1);
-	t.is(data, {
+	const {data} = response;
+	t.deepEqual(data, {
 		data: {
 			users: {
 				login: {
@@ -189,7 +190,14 @@ test('invalid credentials in login mutation', async (t) => {
             }
         `
 	});
-	const { ok, error } = data.users.login;
-	t.false(ok);
-	t.is(error, "Passwords don't match each other.");
+	t.deepEqual(data, {
+		"data": {
+		  "users": {
+			"login": {
+			  "ok": false,
+			  "error": "Invalid password"
+			}
+		  }
+		}
+	  });
 });
