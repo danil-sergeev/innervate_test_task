@@ -63,32 +63,10 @@ export default oncePerServices((services) => {
 				throw new Error(error);
 			}
 		};
-	}
-
-	const GraphQLJsonbDate = new GraphQLScalarType({
-		name: 'JsonbDatee',
-		description: 'Date custom scalar type',
-		parseValue(value) {
-			const { birthday } = value;
-			console.log(birthday);
-			return new Date(birthday); // value from the client
-		},
-		serialize(value) {
-			const { birthday } = value;
-			console.log(birthday);
-			return new Date(birthday); // value sent to the client
-		},
-		parseLiteral(ast) {
-			if (ast.kind === Kind.INT) {
-				return new Date(ast.value); // ast value is always in string format
-			}
-			return null;
-		}
-	});
-
+	};
+	
 	return {
 		allUsers,
-		login,
-		GraphQLJsonbDate
+		login
 	};
 });

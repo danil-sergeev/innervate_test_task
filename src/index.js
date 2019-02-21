@@ -38,7 +38,7 @@ const realConsole = console;
 		manager = new (require('./common/services').NodeManager(consoleAndBusServicesOnly))({
 			// далее consoleAndBusServicesOnly нельзя.  нужно пользоваться manager.services
 			name: nodeName,
-			services: [ require('./services/postgres') ]
+			services: [ require('./services/postgres')]
 		});
 
 		// ждем пока NodeManager скажет что он готов.  при этом часть сервисов может быть в состоянии failed
